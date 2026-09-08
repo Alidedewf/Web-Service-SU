@@ -1,4 +1,4 @@
-# Develop Web-Service
+# Developing Web-Service
 
 Репозиторий для работ по предмету Develop Web-Service.
 
