@@ -121,9 +121,9 @@ Swagger доступен по адресу, указанному в консол
 
 ```json
 {
-  "firstName": "Alex",
-  "lastName": "Smith",
-  "email": "alex@example.com",
+  "firstName": "Alikhan",
+  "lastName": "Mustafayev",
+  "email": "alikhan.mustafayev@example.com",
   "birthDate": "2003-04-12"
 }
 ```
