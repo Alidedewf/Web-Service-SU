@@ -4,6 +4,8 @@ VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UniversityCourseManagementAPI", "src/UniversityCourseManagementAPI/UniversityCourseManagementAPI.csproj", "{D3E95AC2-3B9C-4F3A-9D41-0D4BB95F6A10}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UniversityCourseManagementClient", "src/UniversityCourseManagementClient/UniversityCourseManagementClient.csproj", "{B2A5F6D3-54B3-4E23-9A7D-7E63EA2A74D9}"
+EndProject
 Global
  GlobalSection(SolutionConfigurationPlatforms) = preSolution
   Debug|Any CPU = Debug|Any CPU
@@ -14,5 +16,9 @@ Global
   {D3E95AC2-3B9C-4F3A-9D41-0D4BB95F6A10}.Debug|Any CPU.Build.0 = Debug|Any CPU
   {D3E95AC2-3B9C-4F3A-9D41-0D4BB95F6A10}.Release|Any CPU.ActiveCfg = Release|Any CPU
   {D3E95AC2-3B9C-4F3A-9D41-0D4BB95F6A10}.Release|Any CPU.Build.0 = Release|Any CPU
+  {B2A5F6D3-54B3-4E23-9A7D-7E63EA2A74D9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+  {B2A5F6D3-54B3-4E23-9A7D-7E63EA2A74D9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+  {B2A5F6D3-54B3-4E23-9A7D-7E63EA2A74D9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+  {B2A5F6D3-54B3-4E23-9A7D-7E63EA2A74D9}.Release|Any CPU.Build.0 = Release|Any CPU
  EndGlobalSection
 EndGlobal

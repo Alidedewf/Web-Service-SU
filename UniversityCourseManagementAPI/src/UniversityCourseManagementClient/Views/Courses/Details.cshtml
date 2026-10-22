@@ -1,0 +1,12 @@
+@model CourseV2Dto
+@{ ViewData["Title"] = Model.Name; }
+<h1>@Model.Name <span class="badge">API v2</span></h1>
+<p class="muted">@Model.Description</p>
+<dl>
+    <dt>Credits</dt><dd>@Model.Credits</dd>
+    <dt>Teacher</dt><dd>@Model.Teacher.FirstName @Model.Teacher.LastName</dd>
+    <dt>Department</dt><dd>@Model.Teacher.Department</dd>
+    <dt>Enrolled students</dt><dd>@Model.EnrollmentCount</dd>
+    <dt>Created</dt><dd>@Model.CreatedAt.ToString("yyyy-MM-dd")</dd>
+</dl>
+<p><a asp-action="Index">← Back to courses</a></p>

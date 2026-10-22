@@ -1,0 +1,27 @@
+@model CoursePageModel
+@{ ViewData["Title"] = "Courses"; }
+<h1>Courses <span class="badge">API v1</span></h1>
+@if (Model.Error is not null)
+{
+    <p class="alert" role="alert">@Model.Error</p>
+}
+else if (Model.Courses.Count == 0)
+{
+    <p class="muted">No courses found.</p>
+}
+else
+{
+    <table>
+        <thead><tr><th>Course</th><th>Credits</th><th>Description</th></tr></thead>
+        <tbody>
+        @foreach (var course in Model.Courses)
+        {
+            <tr>
+                <td><a asp-action="Details" asp-route-id="@course.Id">@course.Name</a></td>
+                <td>@course.Credits</td>
+                <td class="muted">@course.Description</td>
+            </tr>
+        }
+        </tbody>
+    </table>
+}

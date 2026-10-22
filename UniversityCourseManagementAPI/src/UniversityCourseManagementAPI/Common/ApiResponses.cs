@@ -14,4 +14,8 @@ public static class ApiResponses
         c.BadRequest(ReturnResult<T>.Failure(400, code, message, c.HttpContext.TraceIdentifier));
     public static IActionResult Conflict<T>(ControllerBase c, string code, string message) =>
         c.Conflict(ReturnResult<T>.Failure(409, code, message, c.HttpContext.TraceIdentifier));
+    public static IActionResult Unauthorized<T>(ControllerBase c, string code, string message) =>
+        c.Unauthorized(ReturnResult<T>.Failure(401, code, message, c.HttpContext.TraceIdentifier));
+    public static IActionResult Forbidden<T>(ControllerBase c, string code, string message) =>
+        c.StatusCode(StatusCodes.Status403Forbidden, ReturnResult<T>.Failure(403, code, message, c.HttpContext.TraceIdentifier));
 }

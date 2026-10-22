@@ -26,6 +26,8 @@ public interface ITeacherRepository
 public interface ICourseRepository
 {
     Task<List<Course>> GetAllAsync(string? search, int? teacherId, int? minCredits, int? maxCredits, CancellationToken ct);
+    Task<List<Course>> GetForVersion2Async(CancellationToken ct);
+    Task<Course?> GetForVersion2ByIdAsync(int id, CancellationToken ct);
     Task<Course?> GetByIdAsync(int id, CancellationToken ct);
     Task AddAsync(Course entity, CancellationToken ct);
     Task SaveAsync(CancellationToken ct);
@@ -74,6 +76,10 @@ public sealed class CourseRepository(ApplicationDbContext db) : ICourseRepositor
         if (maxCredits.HasValue) q = q.Where(x => x.Credits <= maxCredits.Value);
         return q.OrderBy(x => x.Id).ToListAsync(ct);
     }
+    public Task<List<Course>> GetForVersion2Async(CancellationToken ct) => db.Courses.AsNoTracking()
+        .Include(x => x.Teacher).Include(x => x.Enrollments).OrderBy(x => x.Id).ToListAsync(ct);
+    public Task<Course?> GetForVersion2ByIdAsync(int id, CancellationToken ct) => db.Courses.AsNoTracking()
+        .Include(x => x.Teacher).Include(x => x.Enrollments).FirstOrDefaultAsync(x => x.Id == id, ct);
     public Task<Course?> GetByIdAsync(int id, CancellationToken ct) => db.Courses.Include(x => x.Teacher).FirstOrDefaultAsync(x => x.Id == id, ct);
     public Task AddAsync(Course entity, CancellationToken ct) => db.Courses.AddAsync(entity, ct).AsTask();
     public Task SaveAsync(CancellationToken ct) => db.SaveChangesAsync(ct);

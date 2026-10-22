@@ -1,9 +1,10 @@
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using UniversityCourseManagementAPI.Models;
 
 namespace UniversityCourseManagementAPI.Data;
 
-public class ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : DbContext(options)
+public class ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : IdentityDbContext<ApplicationUser>(options)
 {
     public DbSet<Student> Students => Set<Student>();
     public DbSet<Teacher> Teachers => Set<Teacher>();
@@ -23,5 +24,9 @@ public class ApplicationDbContext(DbContextOptions<ApplicationDbContext> options
         modelBuilder.Entity<Enrollment>().HasOne(x => x.Course).WithMany(x => x.Enrollments)
             .HasForeignKey(x => x.CourseId).OnDelete(DeleteBehavior.Cascade);
         modelBuilder.Entity<Enrollment>().Property(x => x.Grade).HasPrecision(5, 2);
+        modelBuilder.Entity<ApplicationUser>().HasOne(x => x.Student).WithMany()
+            .HasForeignKey(x => x.StudentId).OnDelete(DeleteBehavior.SetNull);
+        modelBuilder.Entity<ApplicationUser>().HasOne(x => x.Teacher).WithMany()
+            .HasForeignKey(x => x.TeacherId).OnDelete(DeleteBehavior.SetNull);
     }
 }

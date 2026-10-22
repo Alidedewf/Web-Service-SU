@@ -11,3 +11,8 @@ public class TeacherCreateDto
     [Required, MaxLength(120)] public string Department { get; set; } = string.Empty;
 }
 public class TeacherUpdateDto : TeacherCreateDto { }
+// Public contract for anonymous and non-admin users: no contact data.
+public record TeacherPublicDto(int Id, string FirstName, string LastName, string Department)
+{
+    public static TeacherPublicDto From(TeacherDto t) => new(t.Id, t.FirstName, t.LastName, t.Department);
+}
